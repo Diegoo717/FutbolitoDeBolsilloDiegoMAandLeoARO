@@ -87,7 +87,7 @@ fun FootballGame() {
     }
 
     LaunchedEffect(key1 = currentPeriod, key2 = currentPlayer, key3 = isPaused) {
-        timeRemaining = 50
+        timeRemaining = 15
         while (timeRemaining > 0 && gameActive) {
             if (!isPaused) {
                 delay(1000)
@@ -567,28 +567,16 @@ fun FootballGame() {
                     }
                 }
 
-                drawCircle(color = Color.White, radius = ballRadius, center = ballPosition)
+
+
+                
+                drawCircle(color = Color.DarkGray, radius = ballRadius, center = ballPosition)
                 drawCircle(
-                    color = Color.Black,
-                    radius = ballRadius * 0.7f,
+                    color = Color.Green,
+                    radius = ballRadius * 0.2f,
                     center = ballPosition,
                     style = Stroke(width = 2f)
                 )
-
-                for (i in 0 until 5) {
-                    val angle = (i * 72).toFloat()
-                    val x1 = ballPosition.x + ballRadius * 0.7f * cos(Math.toRadians(angle.toDouble())).toFloat()
-                    val y1 = ballPosition.y + ballRadius * 0.7f * sin(Math.toRadians(angle.toDouble())).toFloat()
-                    val x2 = ballPosition.x + ballRadius * 0.7f * cos(Math.toRadians((angle + 144).toDouble())).toFloat()
-                    val y2 = ballPosition.y + ballRadius * 0.7f * sin(Math.toRadians((angle + 144).toDouble())).toFloat()
-
-                    drawLine(
-                        color = Color.Black,
-                        start = Offset(x1, y1),
-                        end = Offset(x2, y2),
-                        strokeWidth = 2f
-                    )
-                }
             }
         }
     }
